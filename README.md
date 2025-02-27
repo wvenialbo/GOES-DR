@@ -7,18 +7,24 @@ in distress. GOES data products have led to more accurate and timely weather
 forecasts and better understanding of long-term climate conditions. The
 National Aeronautics and Space Administration (NASA) builds and launches the
 GOES, and the National Oceanic and Atmospheric Administration (NOAA) operates
-them &#91;[6](#hist)&#93;.*
+them &#91;[2](#hist)&#93;.*
 
 **GOES-DR** is an open-source Python package that streamlines the process of
 reading Level 2 GOES R series satellite imagery. This toolkit enables efficient
 reading and extraction of snapshot data segments directly from NetCDF4 files
-produced by GOES-R Series satellites &#91;[2](#goesr)&#93;.
+produced by GOES-R Series satellites &#91;[3](#goesr)&#93;.
 
 ## Supported Datasets
 
 1. **GOES 4th Generation (GOES-16 to GOES-18)**: Also known as the R to U
    Series, these satellites offer advanced imagery and atmospheric measurements
-   with better spatial, spectral, and temporal resolution &#91;[7](#goesr)&#93;.
+   with better spatial, spectral, and temporal resolution &#91;[3](#goesr)&#93;.
+
+See [NOAA Geostationary Operational Environmental Satellites (GOES) 16, 17 &
+18][11] and [NOAA GOES on AWS (CICS)][12] for information on the GOES-R Series
+data available from NOAA on AWS. You can find much more detailed information
+about GOES-R Series data from NOAA's [Geostationary Operational Environmental
+Satellites - R Series][0].
 
 ## Data Sources
 
@@ -85,16 +91,19 @@ package as:
 > [git:wvenialbo/GOES-DR](https://github.com/wvenialbo/GOES-DR), *[indicate
 > access date]*.
 
+### Credits for GOES-R Series Data
+
 **Dataset Citation:**
+
+For Cloud and Moisture Imagery Products (CMIP), please cite the following:
 
 > GOES-R Algorithm Working Group, and GOES-R Series Program (2017): NOAA GOES-R
 > Series Advanced Baseline Imager (ABI) Level 2 Cloud and Moisture Imagery
 > Products (CMIP). *[indicate subset used]*. *NOAA National Centers for
-> Environmental Information*,
-> [doi:10.7289/V5736P36]((https://doi.org/10.7289/V5736P36)), *[access date]*.
+> Environmental Information*, [doi:10.7289/V5736P36][51], *[access date]*.
 
-Visit [NOAA National Centers for Environmental Information](https://www.ncei.noaa.gov/)
-for other product credits.
+For other products, please, visit [NOAA National Centers for Environmental
+Information][10].
 
 ## Contact and Support
 
@@ -106,11 +115,13 @@ gmail.com](mailto:wvenialbo@gmail.com).
 
 ## Similar Projects
 
-- [Brian Blaylock's goes2go](https://github.com/blaylockbk/goes2go): Download
-  and process GOES-16 and GOES-17 data from NOAA's archive on AWS using Python.
-  ([readthedocs](https://goes2go.readthedocs.io/))
-- [Joao Henry's GOES](https://github.com/joaohenry23/GOES): Python package to
-  download and manipulate GOES-16/17/18 data.
+- [Brian Blaylock's goes2go][22]: Download and process GOES-16 and GOES-17 data
+  from NOAA's archive on AWS using Python.  ([readthedocs][31])
+- [Joao Henry's GOES][23]: Python package to download and manipulate
+  GOES-16/17/18 data.
+
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable MD033 -->
 
 ## References
 
@@ -119,14 +130,38 @@ gmail.com](mailto:wvenialbo@gmail.com).
    Imagery Products (CMIP). *[indicate subset used]*. *NOAA National Centers
    for Environmental Information*,
    [doi:10.7289/V5736P36]((https://doi.org/10.7289/V5736P36)), *[access date]*.
-
-2. GOES-R Series Data Products. *GOES-R Website*,
-   https://www.goes-r.gov/products/overview.html, retrieved on 2024.<a
+2. GOES History. *GOES-R Website*,
+   [https://www.goes-r.gov/mission/history.html][1], retrieved on 2024.<a
+   name="hist"></a>
+3. GOES-R Series Data Products. *GOES-R Website*,
+   [https://www.goes-r.gov/products/overview.html][2], retrieved on 2024.<a
    name="goesr"></a>
+4. NOAA Big Data Program, *NOAA Open Data Dissemination Program*,
+   [https://github.com/NOAA-Big-Data-Program/bdp-data-docs][21], retrieved on
+   2024.
+5. Beginner’s Guide to GOES-R Series Data: How to acquire, analyze, and
+   visualize GOES-R Series data, *Resources compiled by GOES-R Product Readiness
+   and Operations*, Satellite Products and Services Division, National Oceanic
+   and Atmospheric Administration.  [PDF][42]. Last Updated on May 23, 2024,
+   retrieved on 2024.
+6. GOES-R Series Data Book, *GOES-R Series Program Office*, Goddard Space
+    Flight Center, National Aeronautics and Space Administration. [PDF][41],
+    retrieved on 2024.
 
-[0]: hidden_references:
-[1]: https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc:C00993
-[2]: https://registry.opendata.aws/noaa-goes/
-[3]: https://docs.opendata.aws/noaa-goes16/cics-readme.html
-[4]: https://www.goes-r.gov/
-[5]: https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc:C00829
+<!-- markdownlint-restore -->
+
+<!-- hidden-references: named links -->
+
+[0]: https://www.goes-r.gov/
+[1]: https://www.goes-r.gov/mission/history.html
+[2]: https://www.goes-r.gov/products/overview.html
+[10]: https://www.ncei.noaa.gov/
+[11]: https://registry.opendata.aws/noaa-goes/
+[12]: https://docs.opendata.aws/noaa-goes16/cics-readme.html
+[21]: https://github.com/NOAA-Big-Data-Program/bdp-data-docs
+[22]: https://github.com/blaylockbk/goes2go
+[23]: https://github.com/joaohenry23/GOES
+[31]: https://goes2go.readthedocs.io/
+[41]: https://www.goes-r.gov/downloads/resources/documents/GOES-RSeriesDataBook.pdf
+[42]: https://www.goes-r.gov/downloads/resources/documents/Beginners_Guide_to_GOES-R_Series_Data.pdf
+[51]: https://doi.org/10.7289/V5736P36
