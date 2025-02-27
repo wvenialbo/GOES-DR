@@ -24,7 +24,7 @@
     "Topic :: Scientific/Engineering :: Information Analysis",
     "Topic :: Utilities",
   ]
-  dependencies = ["netcdf4=~1.7.2"]
+  dependencies = ["netcdf4~=1.7.2"]
   description = "GOES-DR — GOES Satellite Imagery Dataset Reader"
   dynamic = ["version"]
   keywords = [
