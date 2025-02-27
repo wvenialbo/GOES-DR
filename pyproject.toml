@@ -99,7 +99,7 @@
     docstring-convention = "numpy"
     extend-ignore        = ["ANN101", "DAR103"]
     max-line-length      = 79
-    per-file-ignores     = ["__init__.py:F401", "./src/goesdl/utils/headers.py:DAR201"]
+    per-file-ignores     = ["__init__.py:F401", "./src/goesdr/typing/__init__.py:A005"]
     strictness           = "full"
     allow-init-docstring = true
 
