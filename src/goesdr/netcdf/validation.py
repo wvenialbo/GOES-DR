@@ -1,5 +1,7 @@
 """
-Provide utility functions for type validation, including special
+Provide utility functions for type validation.
+
+Validate a value against a provided type annotation. Include special
 handling for NumPy arrays and homogeneous collections.
 
 Functions
@@ -35,10 +37,13 @@ def _validate_ndarray_shape(
     pattern = ""
     for type_ in specs:
         if type_origin := get_origin(type_):
-            if type_origin is Literal:
-                pattern += f"[{get_args(type_)[0]}],"
-            else:
+            if type_origin is not Literal:
                 return False
+            size = str(get_args(type_)[0])
+            if not size.isdigit():
+                return False
+            lpattern = [f"[{c}]" for c in size]
+            pattern += f"{''.join(lpattern)},"
         elif type_ is Ellipsis:
             pattern += r"[\d,]+,"
         elif issubclass(type_, int):
@@ -48,6 +53,8 @@ def _validate_ndarray_shape(
 
     pattern = pattern.strip(",")
     shape_string = str(shape).strip("(,)").replace(" ", "")
+
+    print(pattern, shape_string)
 
     return bool(re.fullmatch(pattern, shape_string))
 
@@ -86,7 +93,7 @@ def _validate_ndarray(value: Any, annotation: type) -> bool:
     return _validate_ndarray_shape(value.shape, get_args(annotation)[0])
 
 
-def validate_value_type(value: Any, annotation: type) -> bool:
+def validate_type(value: Any, annotation: type) -> bool:
     """
     Validate the type of a given value against a specified annotation.
 
@@ -106,6 +113,9 @@ def validate_value_type(value: Any, annotation: type) -> bool:
     bool
         True if the value matches the annotation, False otherwise.
     """
+    if isinstance(annotation, type(Any)):
+        return True
+
     origin: type | None = get_origin(annotation)
 
     if not origin:

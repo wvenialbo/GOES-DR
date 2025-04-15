@@ -1,10 +1,15 @@
 """
-This module provides utility functions for generating type hints for
-various collections and data types. The type hints are generated as
-strings that can be used for type annotations in Python code.
+Provide utility functions for generating type hints.
+
+Generate type hints for various collections and data types. The type
+hints are generated as strings that can be used for type annotations in
+Python code. Include special handling for NumPy arrays and homogeneous
+collections.
 
 Functions
 ---------
+get_value_typehint(value: Any) -> str
+    Generate a type hint for a given value.
 """
 
 from collections.abc import Iterable, Sequence
@@ -17,7 +22,7 @@ def _get_multitype_typehint(multitype: Iterable[Any], union: str) -> str:
     # Generate a type hint for a collection with multiple types.
     type_hints: set[str] = set()
     for element in multitype:
-        type_hint = get_value_typehint(element)
+        type_hint = get_typehint(element)
         type_hints.add(type_hint)
     return union.join(type_hints)
 
@@ -73,7 +78,7 @@ def _get_collection_typehint(collection: Iterable[Any]) -> str:
     return _get_mixedtype_typehint(collection)
 
 
-def get_value_typehint(value: Any) -> str:
+def get_typehint(value: Any) -> str:
     """
     Generate a type hint for a given value.
 
@@ -91,3 +96,27 @@ def get_value_typehint(value: Any) -> str:
     if isinstance(value, Iterable) and not isinstance(value, str):
         return _get_collection_typehint(value)
     return type(value).__name__
+
+
+def get_annotated(annotation: type) -> str:
+    """
+    Generate a type hint for a given annotation.
+
+    Converts a type annotation to a simplified string representation by
+    removing specific substrings.
+
+    Parameters
+    ----------
+    annotation : type
+        The type annotation to generate a hint for.
+
+    Returns
+    -------
+    str
+        The type hint for the given annotation.
+    """
+    remove = ["numpy.", "<class '", "'>"]
+    hint = str(annotation)
+    for tag in remove:
+        hint = hint.replace(tag, "")
+    return hint

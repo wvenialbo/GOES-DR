@@ -1,7 +1,5 @@
 [project]
-  authors = [
-    { name = "Waldemar Villamayor-Venialbo", email = "wvenialbo@fpuna.edu.py" },
-  ]
+  authors = [{ name = "Waldemar Villamayor-Venialbo", email = "wvenialbo@fpuna.edu.py" }]
   classifiers = [
     "Development Status :: 4 - Beta",
     "Development Status :: 5 - Production/Stable",
@@ -26,12 +24,9 @@
     "Topic :: Scientific/Engineering :: Information Analysis",
     "Topic :: Utilities",
   ]
-  dependencies = [
-  ]
+  dependencies = ["netcdf4~=1.7.2"]
   description = "GOES-DR — GOES Satellite Imagery Dataset Reader"
-  dynamic = [
-    "version",
-  ]
+  dynamic = ["version"]
   keywords = [
     "GOES",
     "GOES-R",
@@ -65,29 +60,23 @@
       version = { attr = "goesdr.__version__" }
 
     [tool.setuptools.package-data]
-      goesdl = [
-        "py.typed",
-      ]
+      goesdl = ["py.typed"]
 
     [tool.setuptools.packages.find]
       where = ["src"]
 
   [tool.poetry]
-    authors     = [
-      "Waldemar Villamayor-Venialbo <wvenialbo@fpuna.edu.py>",
-    ]
+    authors     = ["Waldemar Villamayor-Venialbo <wvenialbo@fpuna.edu.py>"]
     description = "GOES-DR — GOES Satellite Imagery Dataset Reader"
     license     = "MIT"
     name        = "goes-dr"
-    packages    = [
-      { include = "goesdr" },
-      { include = "goesdr/py.typed" },
-    ]
+    packages    = [{ include = "goesdr" }, { include = "goesdr/py.typed" }]
     readme      = "README.md"
-    version     = "0.1.0"
+    version     = "v0.0-rc0"
 
     [tool.poetry.dependencies]
-      python   = "^3.9"
+      netcdf4 = "~1.7.2"
+      python  = "^3.9"
 
   [tool.black]
     line-length = 79
@@ -95,13 +84,7 @@
   [tool.coverage]
 
     [tool.coverage.run]
-      omit = [
-        ".ipynb_checkpoints/*",
-        ".venv/*",
-        ".vscode/*",
-        "htmlcov/*",
-        "var/*",
-      ]
+      omit = [".ipynb_checkpoints/*", ".venv/*", ".vscode/*", "htmlcov/*", "var/*"]
 
     [tool.coverage.report]
       show_missing = true
@@ -111,17 +94,12 @@
 
   [tool.flake8]
     # darglint, darglint2
-    docstring_style      = "numpy"
+    docstring_style = "numpy"
     # flake8-docstrings
     docstring-convention = "numpy"
-    extend-ignore        = [
-      "ANN101",
-    ]
+    extend-ignore        = ["ANN101", "DAR103"]
     max-line-length      = 79
-    per-file-ignores     = [
-      "__init__.py:F401",
-      "./src/goesdl/utils/headers.py:DAR201",
-    ]
+    per-file-ignores     = ["__init__.py:F401", "./src/goesdr/typing/__init__.py:A005"]
     strictness           = "full"
     allow-init-docstring = true
 
@@ -201,11 +179,7 @@
 
       # List of plugins (as comma separated values of python module names) to load,
       # usually to register additional checkers.
-      load-plugins = [
-        "pylint.extensions.docparams",
-        "pylint.extensions.magic_value",
-        "pylint.extensions.no_self_use",
-      ]
+      load-plugins = ["pylint.extensions.docparams", "pylint.extensions.magic_value", "pylint.extensions.no_self_use"]
 
       # Pickle collected data for later comparisons.
       persistent = true
@@ -364,24 +338,11 @@
       # check-protected-access-in-special-methods =
 
       # List of method names used to declare (i.e. assign) instance attributes.
-      defining-attr-methods = [
-        "__init__",
-        "__new__",
-        "__post_init__",
-        "asyncSetUp",
-        "setUp",
-      ]
+      defining-attr-methods = ["__init__", "__new__", "__post_init__", "asyncSetUp", "setUp"]
 
       # List of member names, which should be excluded from the protected access
       # warning.
-      exclude-protected = [
-        "_asdict",
-        "_fields",
-        "_make",
-        "_replace",
-        "_source",
-        "os._exit",
-      ]
+      exclude-protected = ["_asdict", "_fields", "_make", "_replace", "_source", "os._exit"]
 
       # List of valid names for the first argument in a class method.
       valid-classmethod-first-arg = ["cls"]
@@ -517,13 +478,7 @@
     [tool.pylint."messages control"]
       # Only show warnings with the listed confidence levels. Leave empty to show all.
       # Valid levels: HIGH, CONTROL_FLOW, INFERENCE, INFERENCE_FAILURE, UNDEFINED.
-      confidence = [
-        "CONTROL_FLOW",
-        "HIGH",
-        "INFERENCE",
-        "INFERENCE_FAILURE",
-        "UNDEFINED",
-      ]
+      confidence = ["CONTROL_FLOW", "HIGH", "INFERENCE", "INFERENCE_FAILURE", "UNDEFINED"]
 
       # Disable the message, report, category or checker with the given id(s). You can
       # either give multiple identifiers separated by comma (,) or put this option
@@ -707,12 +662,7 @@
       # List of class names for which member attributes should not be checked (useful
       # for classes with dynamically set attributes). This supports the use of
       # qualified names.
-      ignored-classes = [
-        "_thread._local",
-        "argparse.Namespace",
-        "optparse.Values",
-        "thread._local",
-      ]
+      ignored-classes = ["_thread._local", "argparse.Namespace", "optparse.Values", "thread._local"]
 
       # Show a hint with possible names when a member name was not found. The aspect of
       # finding the hint is based on edit distance.
@@ -759,13 +709,7 @@
 
       # List of qualified module names which can have objects that can redefine
       # builtins.
-      redefining-builtins-modules = [
-        "builtins",
-        "future.builtins",
-        "io",
-        "past.builtins",
-        "six.moves",
-      ]
+      redefining-builtins-modules = ["builtins", "future.builtins", "io", "past.builtins", "six.moves"]
 
   [tool.mypy]
     # Introduce stricter options
@@ -801,7 +745,7 @@
     warn_return_any = true
 
   [tool.pydoclint]
-    style = 'numpy'
+    style                = 'numpy'
     allow-init-docstring = true
 
   [tool.pydocstyle]
@@ -809,10 +753,7 @@
 
 [build-system]
   build-backend = "setuptools.build_meta"
-  requires      = [
-    "setuptools-scm",
-    "setuptools>=75.2.0",
-  ]
+  requires      = ["setuptools-scm", "setuptools>=75.2.0"]
 
   # build-backend = "poetry.core.masonry.api"
   # requires      = [

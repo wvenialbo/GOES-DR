@@ -34,8 +34,6 @@ sphinxcontrib-trio
 sphinxcontrib-websupport
 
 # Extended type-stubs
-boto3-stubs[s3]
-types-requests
 
 # Testing
 coverage[toml]
