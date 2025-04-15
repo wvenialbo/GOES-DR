@@ -1,5 +1,7 @@
 # GOES-DR — GOES Satellite Imagery Dataset Reader
 
+**NOTE: This project was merged into the [GOES-DL][24] project.**
+
 *Since 1975, Geostationary Operational Environmental Satellites (GOES) have
 provided continuous imagery and data on atmospheric conditions and solar
 activity (space weather). They have even aided in search and rescue of people
@@ -161,6 +163,7 @@ gmail.com](mailto:wvenialbo@gmail.com).
 [21]: https://github.com/NOAA-Big-Data-Program/bdp-data-docs
 [22]: https://github.com/blaylockbk/goes2go
 [23]: https://github.com/joaohenry23/GOES
+[24]: https://github.com/wvenialbo/GOES-DL
 [31]: https://goes2go.readthedocs.io/
 [41]: https://www.goes-r.gov/downloads/resources/documents/GOES-RSeriesDataBook.pdf
 [42]: https://www.goes-r.gov/downloads/resources/documents/Beginners_Guide_to_GOES-R_Series_Data.pdf
